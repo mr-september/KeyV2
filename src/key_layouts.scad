@@ -17,4 +17,7 @@ include <layouts/gherkin/gherkin_bump.scad>
 include <layouts/dactyl_manuform/4x6.scad>
 include <layouts/dactyl_manuform/4x6_legends.scad>
 
+include <layouts/skeletyl/skeletyl.scad>
+include <layouts/skeletyl/skeletyl_legends.scad>
+
 include <layouts/plate.scad>
