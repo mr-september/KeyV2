@@ -19,49 +19,49 @@ include <./includes.scad>
 // example layoutr
 // 60_percent_default("dsa") key();
 
-top_left_legends = [
-  ["", "!", "@", "#", "_", "", "~", "{", "}", "|", ""],
-  ["", "$", "%", "^", "+", "", ":", "\"", "", "⎙", ""],
-  ["", "&", "*", "(", ")", "", ">", "", "", "", "⤓"],
-];
-
-bot_left_legends = [
-  ["", "1", "2", "3", "4", "", "`", "[", "]", "\\", ""],
-  ["", "4", "5", "6", "=", "", ";", "\'", "", "⎀", ""],
-  ["", "7", "8", "9", "0", "", "<", "", "", "", "⤒"],
-];
-
-mid_right_legends = [
-  ["", "F1", "F2", "F3", "F10", "", "🔇", "⏯", "⏮", "⏭", ""],
-  ["⇪", "F4", "F5", "F6", "F11", "", "⎌", "✂'", "⎘", "📋", ""],
-  ["", "F7", "F8", "F9", "F12", "", "M1", "M2", "M3", "M4", "M5"],
-];
-
-front_legends = [
-  ["Q", "W", "E", "R", "T", "", "Y", "U", "I", "O", "P"],
-  ["A", "S", "D", "F", "G", "", "H", "J'", "K", "L", ""],
-  ["", "Z", "X", "C", "V", "", "B", "N", "M", "", "?   !"],
-];
-
-
 $font_size = 3;
-//$rounded_key = true;
+// rounded_key is very slow, only un-comment for final render
+// $rounded_key = true;
 // choc()
-// legends()
-//skeletyl_legends("dsa")
-//no_stem_support()
-//key();
+no_stem_support()
 
 simple_layout(skeletyl_main) {
   dsa_row(3, $column){
-    legend(top_left_legends[$row][$column], [-0.9, -0.8]) {
-      legend(bot_left_legends[$row][$column], [-0.9, 0.8]) {
-        legend(mid_right_legends[$row][$column], [0.8, 0]) {
-            front_legend(front_legends[$row][$column]) {
-                key();
-        }
+    legend(skeletyl_top_left_legends[$row][$column], [-0.9, -0.8]) {
+      legend(skeletyl_bot_left_legends[$row][$column], [-0.9, 0.8]) {
+        legend(skeletyl_mid_right_legends[$row][$column], [0.8, 0]) {
+            legend(skeletyl_mid_left_legends[$row][$column], [-0.8, 0]) {
+                legend(skeletyl_top_cent_legends[$row][$column], [0, -1]) {
+                    legend(skeletyl_bot_cent_legends[$row][$column], [0, 1]) {
+                        legend(skeletyl_center_legends[$row][$column]) {
+                            front_legend(skeletyl_front_legends[$row][$column]) {
+                                key();
+                  }
+                }
+              }
+            }
+          }
         }
       }
+    }
+  }
+}
+no_stem_support()
+translate_u(2,-3) rotate([0,0,-30])
+simple_layout(skeletyl_thumbs_l) {
+  dsa_row(3, $column){
+    legend(skeletyl_thumbs_l_legends[$row][$column]) {
+        key();
+    }
+  }
+}
+
+no_stem_support()
+translate_u(6.45,-4.5) rotate([0,0,30])
+simple_layout(skeletyl_thumbs_r) {
+  dsa_row(3, $column){
+    legend(skeletyl_thumbs_r_legends[$row][$column]) {
+        key();
     }
   }
 }
