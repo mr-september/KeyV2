@@ -19,6 +19,7 @@ include <./includes.scad>
 // example layoutr
 // 60_percent_default("dsa") key();
 
+$font = "Noto Sans";
 $font_size = 3;
 // rounded_key is very slow, only un-comment for final render
 // $rounded_key = true;
